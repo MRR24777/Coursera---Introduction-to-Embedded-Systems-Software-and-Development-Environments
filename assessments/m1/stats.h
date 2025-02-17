@@ -103,6 +103,6 @@
  * @param array Pointer to the first element of the array.
  * @param size The number of elements in the array.
  */
- void print_array(unsigned char *array, int size)
+ void print_array(unsigned char *array, int size);
 
 #endif /* __STATS_H__ */
