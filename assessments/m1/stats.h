@@ -21,20 +21,88 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
-
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief Computes the median of an array.
  *
- * <Add Extended Description Here>
+ * This function calculates the median value of a given array of unsigned 
+ * characters. The array is first sorted, and then the median is determined 
+ * based on the number of elements.
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param test Pointer to the array of unsigned characters.
+ * @param size The number of elements in the array.
  *
- * @return <Add Return Informaiton here>
+ * @return The median value as an unsigned char.
  */
+ unsigned char find_median(unsigned char *test, int size);
 
+ /**
+  * @brief Computes the mean (average) of an array.
+  *
+  * This function calculates the mean value by summing all elements in the array 
+  * and dividing by the number of elements.
+  *
+  * @param test Pointer to the array of unsigned characters.
+  * @param size The number of elements in the array.
+  *
+  * @return The mean value as a float.
+  */
+ float find_mean(unsigned char *test, int size);
+ 
+ /**
+  * @brief Finds the maximum value in an array.
+  *
+  * This function iterates through the array to find and return the maximum value.
+  *
+  * @param test Pointer to the array of unsigned characters.
+  * @param size The number of elements in the array.
+  *
+  * @return The maximum value as an unsigned char.
+  */
+ unsigned char find_maximun(unsigned char *test, int size);
+ 
+ /**
+  * @brief Finds the minimum value in an array.
+  *
+  * This function iterates through the array to find and return the minimum value.
+  *
+  * @param test Pointer to the array of unsigned characters.
+  * @param size The number of elements in the array.
+  *
+  * @return The minimum value as an unsigned char.
+  */
+ unsigned char find_minimun(unsigned char *test, int size);
+ 
+ /**
+  * @brief Sorts an array in descending order.
+  *
+  * This function sorts the elements of the given array in descending order 
+  * (from highest to lowest) using an appropriate sorting algorithm.
+  *
+  * @param test Pointer to the array of unsigned characters.
+  * @param size The number of elements in the array.
+  */
+ void sort_array(unsigned char *test, int size);
+ /**
+ * @brief Displays statistical results of an array.
+ *
+ * This function prints the computed statistics, including the median, mean, 
+ * maximum, and minimum values, in a formatted manner.
+ *
+ * @param median The median value of the array.
+ * @param mean The mean (average) value of the array.
+ * @param maximum The maximum value in the array.
+ * @param minimum The minimum value in the array.
+ */
+ void print_statistics(unsigned char median, float mean, unsigned char maximum, unsigned char minimum);
+/**
+ * @brief Prints the elements of an array.
+ *
+ * This function iterates over an array and prints each element 
+ * separated by a space. The function does not modify the array.
+ *
+ * @param array Pointer to the first element of the array.
+ * @param size The number of elements in the array.
+ */
+ void print_array(unsigned char *array, int size)
 
 #endif /* __STATS_H__ */
