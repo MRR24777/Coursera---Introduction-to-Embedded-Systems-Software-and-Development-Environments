@@ -16,7 +16,6 @@
  * @date April 2, 2017
  *
  */
-
 #include <stdint.h>
 #include "course1.h"
 #include "platform.h"
@@ -94,6 +93,7 @@ int8_t test_memmove1() {
 
   if (! set ) 
   {
+    PRINTF("Was unable to get memory allocated, check 'reserve_words' function");
     return TEST_ERROR;
   }
   
@@ -114,6 +114,7 @@ int8_t test_memmove1() {
   {
     if (set[i + 16] != i)
     {
+      PRINTF("ERROR: set[%d] != %d  => %d\n", i+16, i, set[i+16]);
       ret = TEST_ERROR;
     }
   }
@@ -134,6 +135,7 @@ int8_t test_memmove2() {
 
   if (! set )
   {
+    PRINTF("Was unable to get memory allocated, check 'reserve_words' function");
     return TEST_ERROR;
   }
   ptra = &set[0];
@@ -152,6 +154,7 @@ int8_t test_memmove2() {
   {
     if (set[i + 8] != i)
     {
+      PRINTF("ERROR: set[%d] != %d  => %d\n", i+8, i, set[i+8]);
       ret = TEST_ERROR;
     }
   }
@@ -300,11 +303,11 @@ int8_t test_reverse()
   copy = (uint8_t*)reserve_words(MEM_SET_SIZE_W);
   if (! copy )
   {
+    PRINTF("ERROR dynamically allocating memory");
     return TEST_ERROR;
   }
   
   my_memcopy(set, copy, MEM_SET_SIZE_B);
-
   print_array(set, MEM_SET_SIZE_B);
   my_reverse(set, MEM_SET_SIZE_B);
   print_array(set, MEM_SET_SIZE_B);
@@ -321,7 +324,7 @@ int8_t test_reverse()
   return ret;
 }
 
-void course1(void) 
+int8_t course1(void) 
 {
   uint8_t i;
   int8_t failed = 0;
@@ -339,6 +342,9 @@ void course1(void)
   for ( i = 0; i < TESTCOUNT; i++) 
   {
     failed += results[i];
+    if (results[i]==TEST_ERROR){
+      printf("Test %d failed\n", i);
+    }
   }
 
   PRINTF("--------------------------------\n");
@@ -346,4 +352,11 @@ void course1(void)
   PRINTF("  PASSED: %d / %d\n", (TESTCOUNT - failed), TESTCOUNT);
   PRINTF("  FAILED: %d / %d\n", failed, TESTCOUNT);
   PRINTF("--------------------------------\n");
+
+  // Return 0 if failed, 1 if passed
+  if (failed){
+    return 0;
+  }
+  return 1;
+
 }
